@@ -1,18 +1,8 @@
 /* eslint-disable react/prop-types */
-
 import React, { Component } from 'react';
-import { sortBy } from 'lodash';
 import classNames from 'classnames';
+import { SORTS, smallColumn } from '../constants/constants';
 import Button from './Button';
-
-const smallColumn = { width: '10%' };
-const SORTS = {
-  NONE: list => list,
-  TITLE: list => sortBy(list, 'title'),
-  AUTHOR: list => sortBy(list, 'author'),
-  COMMENTS: list => sortBy(list, 'num_comments').reverse(),
-  POINTS: list => sortBy(list, 'points').reverse(),
-};
 
 const Sort = ({
   sortKey, activeSortKey, onSort, children,

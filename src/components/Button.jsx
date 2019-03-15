@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import React from 'react';
 
 const Button = ({ onClick, className = '', children }) =>
@@ -9,4 +8,16 @@ const Button = ({ onClick, className = '', children }) =>
     </button>
   );
 
-export default Button;
+const Loading = () =>
+  <div>Загрузка ...</div>;
+
+const withLoading = ComponentLoaded => ({ isLoading, ...rest }) => {
+  if (isLoading) {
+    return <Loading />;
+  }
+  return <ComponentLoaded {...rest} />;
+};
+
+const ButtonWithLoading = withLoading(Button);
+
+export default ButtonWithLoading;

@@ -1,23 +1,21 @@
-/* 1eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import Button from './components/Button';
+import ButtonWithLoading from './components/Button';
 import Search from './components/Search';
 import Table from './components/Table';
-
-const DEFAULT_QUERY = 'react';
-const DEFAULT_HPP = '12';
-
-const PATH_BASE = 'https://hn.algolia.com/api/v1';
-const PATH_SEARCH = '/search';
-const PARAM_SEARCH = 'query=';
-const PARAM_PAGE = 'page=';
-const PARAM_HPP = 'hitsPerPage=';
+import {
+  DEFAULT_QUERY,
+  DEFAULT_HPP,
+  PATH_BASE,
+  PATH_SEARCH,
+  PARAM_SEARCH,
+  PARAM_PAGE,
+  PARAM_HPP,
+} from './constants/constants';
 
 const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}&${PARAM_PAGE}`;
-
 console.log(url);
 
 const updateSearchTopStoriesState = (hits, page) => (prevState) => {
@@ -39,7 +37,7 @@ const updateSearchTopStoriesState = (hits, page) => (prevState) => {
 };
 
 class App extends Component {
-  _isMounted = false;
+  isItMounted = false;
 
   state = {
     results: null,
@@ -50,7 +48,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this._isMounted = true;
+    this.isItMounted = true;
 
     const { searchTerm } = this.state;
     this.setState({ searchKey: searchTerm });
@@ -58,7 +56,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    this._isMounted = false;
+    this.isItMounted = false;
   }
 
   needsToSearchTopStories = searchTerm =>
@@ -78,8 +76,8 @@ class App extends Component {
     this.setState({ isLoading: true });
 
     axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-      .then(result => this._isMounted && this.setSearchTopStories(result.data))
-      .catch(error => this._isMounted && this.setState({ error }));
+      .then(result => this.isItMounted && this.setSearchTopStories(result.data))
+      .catch(error => this.isItMounted && this.setState({ error }));
   };
 
   setSearchTopStories = (result) => {
@@ -100,8 +98,8 @@ class App extends Component {
 
     const updatedHits = hits.filter(isNotId);
 
-    console.log(this.state.results.hits); // CONSOLE
-    console.log(updatedHits); // CONSOLE
+    console.log(this.state.results.hits);
+    console.log(updatedHits);
 
     this.setState({
       results: {
@@ -155,17 +153,5 @@ class App extends Component {
     );
   }
 }
-
-const withLoading = ComponentLoaded => ({ isLoading, ...rest }) => {
-  if (isLoading) {
-    return <Loading />;
-  }
-  return <ComponentLoaded {...rest} />;
-};
-
-const Loading = () =>
-  <div>Загрузка ...</div>;
-
-const ButtonWithLoading = withLoading(Button);
 
 export default App;
