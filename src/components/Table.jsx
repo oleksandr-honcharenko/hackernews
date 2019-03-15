@@ -99,11 +99,11 @@ class Table extends Component {
               </span>
               <span style={smallColumn}>
                 {item.num_comments}
-                {'comm'}
+                {' comm'}
               </span>
               <span style={smallColumn}>
                 {item.points}
-                {'points'}
+                {' points'}
               </span>
               <span style={smallColumn}>
                 <Button className="button-inline" onClick={() => onDismiss(item.objectID)}>
