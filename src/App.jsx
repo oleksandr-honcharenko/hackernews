@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import axios from 'axios';
-import './App.css';
 import ButtonWithLoading from './components/Button';
 import Search from './components/Search';
 import Table from './components/Table';
+import './styles/main.scss';
 import {
   DEFAULT_QUERY,
   DEFAULT_HPP,
@@ -15,11 +16,11 @@ import {
   PARAM_HPP,
 } from './constants/constants';
 
-const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}&${PARAM_PAGE}`;
+const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}&${PARAM_PAGE}0&${PARAM_HPP}${DEFAULT_HPP}`;
 console.log(url);
 
 const updateSearchTopStoriesState = (hits, page) => (prevState) => {
-  console.log(prevState);
+  // console.log(prevState);
   const { searchKey, results } = prevState;
 
   const oldHits = results && results[searchKey]

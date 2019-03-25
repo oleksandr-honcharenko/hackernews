@@ -13,6 +13,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "lodash": "^4.17.11",
+    "node-sass": "^4.11.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-scripts": "2.1.5"
@@ -30,7 +31,11 @@
     ],
     "rules": {
       "jsx-a11y/no-autofocus": 0,
-	    "linebreak-style": [0, "error", "windows"],
+      "linebreak-style": [
+        0,
+        "error",
+        "windows"
+      ],
       "implicit-arrow-linebreak": 0,
       "react/destructuring-assignment": 0,
       "operator-linebreak": [
