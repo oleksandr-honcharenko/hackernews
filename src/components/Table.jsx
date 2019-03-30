@@ -1,23 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import classNames from 'classnames';
-import { SORTS, smallColumn } from '../constants/constants';
+import { smallColumn, TableTitleSorts } from '../constants/constants';
 import Button from './Button';
-
-const Sort = ({
-  sortKey, activeSortKey, onSort, children,
-}) => {
-  const sortClass = classNames(
-    'button-inline',
-    { 'button-active': sortKey === activeSortKey },
-  );
-
-  return (
-    <Button onClick={() => onSort(sortKey)} className={sortClass}>
-      {children}
-    </Button>
-  );
-};
+import Sort from './Sort';
 
 class Table extends Component {
   state = {
@@ -40,7 +25,7 @@ class Table extends Component {
 
     const { sortKey, isSortReverse } = this.state;
 
-    const sortedList = SORTS[sortKey](list);
+    const sortedList = TableTitleSorts[sortKey](list);
     const reverseSortedList = isSortReverse
       ? sortedList.reverse()
       : sortedList;
@@ -107,7 +92,7 @@ class Table extends Component {
               </span>
               <span style={smallColumn}>
                 <Button className="button-inline" onClick={() => onDismiss(item.objectID)}>
-                  {'Отбросить'}
+                  {'Throw'}
                 </Button>
               </span>
             </div>

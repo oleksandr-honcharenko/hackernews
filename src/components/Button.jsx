@@ -8,12 +8,9 @@ const Button = ({ onClick, className = '', children }) =>
     </button>
   );
 
-const Loading = () =>
-  <div>Загрузка ...</div>;
-
 const withLoading = ComponentLoaded => ({ isLoading, ...rest }) => {
   if (isLoading) {
-    return <Loading />;
+    return <div>Загрузка ...</div>;
   }
   return <ComponentLoaded {...rest} />;
 };

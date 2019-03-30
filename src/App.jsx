@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import axios from 'axios';
 import ButtonWithLoading from './components/Button';
@@ -127,7 +126,7 @@ class App extends Component {
             onChange={this.onSearchChange}
             onSubmit={this.onSearchSubmit}
           >
-            Поиск
+            Search
           </Search>
         </div>
         {error
@@ -147,7 +146,7 @@ class App extends Component {
             isLoading={isLoading}
             onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
           >
-            Больше историй
+            More News
           </ButtonWithLoading>
         </div>
       </div>
