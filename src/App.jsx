@@ -119,7 +119,7 @@ class App extends Component {
     const list = (results && results[searchKey] && results[searchKey].hits) || [];
 
     return (
-      <div className="page privet">
+      <div className="page privet hi">
         <div className="interactions">
           <Search
             value={searchTerm}
